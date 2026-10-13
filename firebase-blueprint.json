@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "Evaluation": {
+      "title": "Evaluation",
+      "description": "Registro psicométrico oficial 16PF de un aspirante a la Licenciatura en Enseñanza de Lenguas Extranjeras.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Identificador único de la evaluación" },
+        "folio": { "type": "string", "description": "Folio de admisión del aspirante" },
+        "name": { "type": "string", "description": "Nombre completo del aspirante" },
+        "gender": { "type": "string", "description": "Sexo del aspirante (M o F)" },
+        "age": { "type": "number", "description": "Edad del aspirante" },
+        "emphasis": { "type": "string", "description": "Énfasis de lengua extranjera" },
+        "timestamp": { "type": "string", "description": "Fecha y hora de aplicación" },
+        "suitabilityScore": { "type": "number", "description": "Porcentaje de idoneidad docente en lenguas" },
+        "suitabilityVerdict": { "type": "string", "description": "Dictamen de idoneidad vocacional" },
+        "rawScores": { "type": "object", "description": "Puntuaciones brutas de los 16 factores (A a Q4)" },
+        "estens": { "type": "object", "description": "Estenes normativos de los 16 factores (1 a 10)" },
+        "secondaryFactors": { "type": "object", "description": "Factores de segundo orden de Cattell" },
+        "competencies": { "type": "object", "description": "Puntuaciones de competencias docentes" },
+        "answers": { "type": "object", "description": "187 respuestas individuales (a, b, c)" }
+      },
+      "required": ["id", "folio", "name", "gender", "age", "timestamp", "suitabilityScore", "suitabilityVerdict"]
+    },
+    "LearningStyleEvaluation": {
+      "title": "LearningStyleEvaluation",
+      "description": "Evaluación del Test de Estilos de Aprendizaje Modelo PNL (VAK - Visual, Auditivo, Kinestésico) de 40 reactivos.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Identificador único de la evaluación" },
+        "folio": { "type": "string", "description": "Folio de admisión del aspirante" },
+        "name": { "type": "string", "description": "Nombre completo del aspirante" },
+        "gender": { "type": "string", "description": "Sexo del aspirante (M o F)" },
+        "age": { "type": "number", "description": "Edad del aspirante" },
+        "emphasis": { "type": "string", "description": "Énfasis de lengua extranjera" },
+        "timestamp": { "type": "string", "description": "Fecha y hora de aplicación" },
+        "counts": { "type": "object", "description": "Conteo de respuestas para Auditivo, Visual y Kinestésico (suman 40)" },
+        "percentages": { "type": "object", "description": "Porcentaje de cada canal representacional" },
+        "predominantStyle": { "type": "string", "description": "Estilo representacional predominante" },
+        "answers": { "type": "object", "description": "40 respuestas individuales (a, b, c)" }
+      },
+      "required": ["id", "folio", "name", "gender", "age", "timestamp", "predominantStyle"]
+    },
+    "EmotionalIntelligenceEvaluation": {
+      "title": "EmotionalIntelligenceEvaluation",
+      "description": "Evaluación del Test de Inteligencia Emocional de 45 reactivos con puntuación global de 0 a 90 puntos y 5 dimensiones.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Identificador único de la evaluación" },
+        "folio": { "type": "string", "description": "Folio de admisión del aspirante" },
+        "name": { "type": "string", "description": "Nombre completo del aspirante" },
+        "gender": { "type": "string", "description": "Sexo del aspirante (M o F)" },
+        "age": { "type": "number", "description": "Edad del aspirante" },
+        "emphasis": { "type": "string", "description": "Énfasis de lengua extranjera" },
+        "timestamp": { "type": "string", "description": "Fecha y hora de aplicación" },
+        "totalScore": { "type": "number", "description": "Puntuación total obtenida (0 a 90)" },
+        "percentage": { "type": "number", "description": "Porcentaje global obtenido" },
+        "level": { "type": "object", "description": "Nivel y diagnóstico oficial según baremo" },
+        "dimensions": { "type": "object", "description": "Desglose en 5 dimensiones emocionales" },
+        "answers": { "type": "object", "description": "45 respuestas individuales (nunca, algunas_veces, siempre)" }
+      },
+      "required": ["id", "folio", "name", "gender", "age", "timestamp", "totalScore", "percentage"]
+    },
+    "PsychosocialEvaluation": {
+      "title": "PsychosocialEvaluation",
+      "description": "Colección de evaluaciones del Cuestionario de Bienestar Psicosocial en la nube.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Identificador único de la evaluación" },
+        "folio": { "type": "string", "description": "Folio de admisión del aspirante" },
+        "name": { "type": "string", "description": "Nombre completo del aspirante" },
+        "gender": { "type": "string", "description": "Sexo del aspirante (M o F)" },
+        "age": { "type": "number", "description": "Edad del aspirante" },
+        "emphasis": { "type": "string", "description": "Énfasis de lengua extranjera" },
+        "timestamp": { "type": "string", "description": "Fecha y hora de aplicación" },
+        "totalScore": { "type": "number", "description": "Puntuación total obtenida" },
+        "percentage": { "type": "number", "description": "Porcentaje global" },
+        "level": { "type": "object", "description": "Nivel de riesgo" },
+        "dimensions": { "type": "object", "description": "Desglose por dimensiones" },
+        "answers": { "type": "object", "description": "Respuestas a los reactivos" }
+      },
+      "required": ["id", "folio", "name", "gender", "age", "timestamp", "totalScore", "percentage"]
+    },
+    "AppSetting": {
+      "title": "AppSetting",
+      "description": "Configuraciones globales compartidas entre dispositivos (ej. webhook de Google Sheets).",
+      "type": "object",
+      "properties": {
+        "value": { "type": "string", "description": "Valor de la configuración" },
+        "updatedAt": { "type": "string", "description": "Fecha de última actualización" }
+      }
+    }
+  },
+  "firestore": {
+    "/evaluations/{evaluationId}": {
+      "schema": "Evaluation",
+      "description": "Colección de evaluaciones 16PF registradas para consulta y reportes en cualquier dispositivo."
+    },
+    "/learning_styles_evaluations/{evaluationId}": {
+      "schema": "LearningStyleEvaluation",
+      "description": "Colección de evaluaciones del Test de Estilos de Aprendizaje PNL (VAK) en la nube."
+    },
+    "/emotional_intelligence_evaluations/{evaluationId}": {
+      "schema": "EmotionalIntelligenceEvaluation",
+      "description": "Colección de evaluaciones del Test de Inteligencia Emocional en la nube."
+    },
+    "/psychosocial_wellness_evaluations/{evaluationId}": {
+      "schema": "PsychosocialEvaluation",
+      "description": "Colección de evaluaciones del Cuestionario de Bienestar Psicosocial en la nube."
+    },
+    "/app_settings/{settingId}": {
+      "schema": "AppSetting",
+      "description": "Configuraciones globales compartidas entre dispositivos (ej. webhook de Google Sheets)."
+    }
+  }
+}

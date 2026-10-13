@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128;
+    }
+
+    // Evaluations collection (16PF): allows reading and writing records across any device
+    match /evaluations/{evaluationId} {
+      allow get: if isValidId(evaluationId);
+      allow list: if true;
+      allow create, update, delete: if isValidId(evaluationId);
+    }
+
+    // Learning styles collection (PNL - VAK): allows reading and writing records across any device
+    match /learning_styles_evaluations/{evaluationId} {
+      allow get: if isValidId(evaluationId);
+      allow list: if true;
+      allow create, update, delete: if isValidId(evaluationId);
+    }
+
+    // Emotional intelligence collection: allows reading and writing records across any device
+    match /emotional_intelligence_evaluations/{evaluationId} {
+      allow get: if isValidId(evaluationId);
+      allow list: if true;
+      allow create, update, delete: if isValidId(evaluationId);
+    }
+
+    // Psychosocial wellness collection: allows reading and writing records across any device
+    match /psychosocial_wellness_evaluations/{evaluationId} {
+      allow get: if isValidId(evaluationId);
+      allow list: if true;
+      allow create, update, delete: if isValidId(evaluationId);
+    }
+
+    // App settings (e.g. shared Google Sheets webhook URL across devices)
+    match /app_settings/{settingId} {
+      allow read, write: if true;
+    }
+
+    // Default deny other paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
